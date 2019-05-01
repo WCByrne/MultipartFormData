@@ -33,6 +33,9 @@ public class MultipartFormData {
         self.sources = sources
     }
 
+    /// Create the form data
+    ///
+    /// - returns: Data a data object with the form data
     public func data() throws -> Data {
         var data: Data = Data()
         try self.process(with: &data)
