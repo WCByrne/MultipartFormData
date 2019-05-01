@@ -1,0 +1,5 @@
+
+language: objective-c
+osx_image: xcode10.2
+os: osx
+script: xcodebuild clean && xcodebuild test -project MultipartFormData.xcodeproj -scheme MultipartFormDataTests

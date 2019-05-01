@@ -11,6 +11,8 @@
 		DE8C0C53227A46A300CB7605 /* MultipartFormDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8C0C52227A46A300CB7605 /* MultipartFormDataTests.swift */; };
 		DE8C0C55227A46A300CB7605 /* MultipartFormData.h in Headers */ = {isa = PBXBuildFile; fileRef = DE8C0C47227A46A300CB7605 /* MultipartFormData.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE8C0C5F227A46DF00CB7605 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8C0C5E227A46DF00CB7605 /* MultipartFormData.swift */; };
+		DE8C0C68227A48DD00CB7605 /* MultipartFormDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8C0C66227A48DD00CB7605 /* MultipartFormDataSource.swift */; };
+		DE8C0C69227A48DD00CB7605 /* Writable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8C0C67227A48DD00CB7605 /* Writable.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,6 +33,8 @@
 		DE8C0C52227A46A300CB7605 /* MultipartFormDataTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormDataTests.swift; sourceTree = "<group>"; };
 		DE8C0C54227A46A300CB7605 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DE8C0C5E227A46DF00CB7605 /* MultipartFormData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultipartFormData.swift; sourceTree = "<group>"; };
+		DE8C0C66227A48DD00CB7605 /* MultipartFormDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MultipartFormDataSource.swift; sourceTree = "<group>"; };
+		DE8C0C67227A48DD00CB7605 /* Writable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Writable.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,8 @@
 			children = (
 				DE8C0C47227A46A300CB7605 /* MultipartFormData.h */,
 				DE8C0C5E227A46DF00CB7605 /* MultipartFormData.swift */,
+				DE8C0C66227A48DD00CB7605 /* MultipartFormDataSource.swift */,
+				DE8C0C67227A48DD00CB7605 /* Writable.swift */,
 				DE8C0C48227A46A300CB7605 /* Info.plist */,
 			);
 			path = MultipartFormData;
@@ -198,7 +204,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DE8C0C69227A48DD00CB7605 /* Writable.swift in Sources */,
 				DE8C0C5F227A46DF00CB7605 /* MultipartFormData.swift in Sources */,
+				DE8C0C68227A48DD00CB7605 /* MultipartFormDataSource.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

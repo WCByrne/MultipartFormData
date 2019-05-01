@@ -8,55 +8,6 @@
 
 import Foundation
 
-
-extension FileHandle: Writable {
-    func write(_ string: String) {
-        guard let d = string.data(using: .utf8) else { return }
-        self.write(d)
-    }
-
-    func append(_ data: Data) {
-        self.write(data)
-    }
-    func append(_ string: String) {
-        self.write(string)
-    }
-}
-
-extension Data: Writable {
-    mutating func append(_ string: String) {
-        guard let data = string.data(using: .utf8, allowLossyConversion: true) else { return }
-        self.append(data)
-    }
-}
-
-protocol Writable {
-    mutating func append(_ string: String)
-    mutating func append(_ data: Data)
-}
-
-extension Writable {
-    mutating func appendFile(at url: URL, chunkSize: Int = 1000000) throws {
-        let reader = try FileHandle(forReadingFrom: url)
-        var data = reader.readData(ofLength: chunkSize)
-        while !data.isEmpty {
-            self.append(data)
-            data = reader.readData(ofLength: chunkSize)
-        }
-        reader.closeFile()
-    }
-}
-
-protocol MultipartFormDataSource {
-    var name: String { get }
-    var url: URL { get }
-}
-
-extension URL: MultipartFormDataSource {
-    var name: String { return self.lastPathComponent }
-    var url: URL { return self }
-}
-
 public class MultipartFormData {
 
     enum Error: Swift.Error {
@@ -64,25 +15,25 @@ public class MultipartFormData {
     }
 
     public struct Source: MultipartFormDataSource {
-        let name: String
-        let url: URL
+        public let name: String
+        public let url: URL
     }
 
-    let properties: [String: Any]
-    let sources: [String: MultipartFormDataSource]
+    public let properties: [String: Any]
+    public let sources: [String: MultipartFormDataSource]
 
-    let boundary: String = "Boundary-\(NSUUID().uuidString)"
+    public let boundary: String = "Boundary-\(NSUUID().uuidString)"
 
-    var contentType: String {
+    public var contentType: String {
         return "multipart/form-data; boundary=\(self.boundary)"
     }
 
-    init(properties: [String: Any] = [:], sources: [String: MultipartFormDataSource] = [:]) {
+    public init(properties: [String: Any] = [:], sources: [String: MultipartFormDataSource] = [:]) {
         self.properties = properties
         self.sources = sources
     }
 
-    func data() throws -> Data {
+    public func data() throws -> Data {
         var data: Data = Data()
         try self.process(with: &data)
         return data
@@ -91,7 +42,7 @@ public class MultipartFormData {
     /// Write the data for use in an upload task
     ///
     /// - Parameter to: A file url to write to
-    func write(to destination: URL) throws {
+    public func write(to destination: URL) throws {
         guard FileManager.default.createFile(atPath: destination.path, contents: nil, attributes: nil) else {
             throw Error.unknown
         }
