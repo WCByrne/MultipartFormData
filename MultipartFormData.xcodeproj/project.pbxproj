@@ -14,7 +14,7 @@
 		DE45B8DB227B3DF7001F02B9 /* Sources.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45B8B8227A5205001F02B9 /* Sources.swift */; };
 		DE45B8DD227B3E9C001F02B9 /* URLSession+multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45B8DC227B3E9C001F02B9 /* URLSession+multipart.swift */; };
 		DE45B8DE227B3E9C001F02B9 /* URLSession+multipart.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE45B8DC227B3E9C001F02B9 /* URLSession+multipart.swift */; };
-		DE8C0C4E227A46A300CB7605 /* MultipartFormData_macOS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8C0C44227A46A300CB7605 /* MultipartFormData_macOS.framework */; };
+		DE8C0C4E227A46A300CB7605 /* MultipartFormData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DE8C0C44227A46A300CB7605 /* MultipartFormData.framework */; };
 		DE8C0C53227A46A300CB7605 /* MultipartFormDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8C0C52227A46A300CB7605 /* MultipartFormDataTests.swift */; };
 		DE8C0C55227A46A300CB7605 /* MultipartFormData_macOS.h in Headers */ = {isa = PBXBuildFile; fileRef = DE8C0C47227A46A300CB7605 /* MultipartFormData_macOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		DE8C0C5F227A46DF00CB7605 /* MultipartFormData.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE8C0C5E227A46DF00CB7605 /* MultipartFormData.swift */; };
@@ -33,11 +33,11 @@
 
 /* Begin PBXFileReference section */
 		DE45B8B8227A5205001F02B9 /* Sources.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sources.swift; sourceTree = "<group>"; };
-		DE45B8C0227B3DC4001F02B9 /* MultipartFormData_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MultipartFormData_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE45B8C0227B3DC4001F02B9 /* MultipartFormData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MultipartFormData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE45B8C2227B3DC5001F02B9 /* MultipartFormData_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipartFormData_iOS.h; sourceTree = "<group>"; };
 		DE45B8C3227B3DC5001F02B9 /* Info_iOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info_iOS.plist; path = MultipartFormData/supporting/Info_iOS.plist; sourceTree = SOURCE_ROOT; };
 		DE45B8DC227B3E9C001F02B9 /* URLSession+multipart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URLSession+multipart.swift"; sourceTree = "<group>"; };
-		DE8C0C44227A46A300CB7605 /* MultipartFormData_macOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MultipartFormData_macOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE8C0C44227A46A300CB7605 /* MultipartFormData.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MultipartFormData.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		DE8C0C47227A46A300CB7605 /* MultipartFormData_macOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MultipartFormData_macOS.h; sourceTree = "<group>"; };
 		DE8C0C48227A46A300CB7605 /* Info_macOS.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info_macOS.plist; sourceTree = "<group>"; };
 		DE8C0C4D227A46A300CB7605 /* MultipartFormDataTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MultipartFormDataTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -66,7 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DE8C0C4E227A46A300CB7605 /* MultipartFormData_macOS.framework in Frameworks */,
+				DE8C0C4E227A46A300CB7605 /* MultipartFormData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -96,9 +96,9 @@
 		DE8C0C45227A46A300CB7605 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				DE8C0C44227A46A300CB7605 /* MultipartFormData_macOS.framework */,
+				DE8C0C44227A46A300CB7605 /* MultipartFormData.framework */,
 				DE8C0C4D227A46A300CB7605 /* MultipartFormDataTests.xctest */,
-				DE45B8C0227B3DC4001F02B9 /* MultipartFormData_iOS.framework */,
+				DE45B8C0227B3DC4001F02B9 /* MultipartFormData.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -146,9 +146,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		DE45B8BF227B3DC4001F02B9 /* MultipartFormData-iOS */ = {
+		DE45B8BF227B3DC4001F02B9 /* MultipartFormData_iOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE45B8D1227B3DC5001F02B9 /* Build configuration list for PBXNativeTarget "MultipartFormData-iOS" */;
+			buildConfigurationList = DE45B8D1227B3DC5001F02B9 /* Build configuration list for PBXNativeTarget "MultipartFormData_iOS" */;
 			buildPhases = (
 				DE45B8BB227B3DC4001F02B9 /* Headers */,
 				DE45B8BC227B3DC4001F02B9 /* Sources */,
@@ -159,14 +159,14 @@
 			);
 			dependencies = (
 			);
-			name = "MultipartFormData-iOS";
+			name = MultipartFormData_iOS;
 			productName = "MultipartFormData-iOS";
-			productReference = DE45B8C0227B3DC4001F02B9 /* MultipartFormData_iOS.framework */;
+			productReference = DE45B8C0227B3DC4001F02B9 /* MultipartFormData.framework */;
 			productType = "com.apple.product-type.framework";
 		};
-		DE8C0C43227A46A300CB7605 /* MultipartFormData-macOS */ = {
+		DE8C0C43227A46A300CB7605 /* MultipartFormData_macOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = DE8C0C58227A46A300CB7605 /* Build configuration list for PBXNativeTarget "MultipartFormData-macOS" */;
+			buildConfigurationList = DE8C0C58227A46A300CB7605 /* Build configuration list for PBXNativeTarget "MultipartFormData_macOS" */;
 			buildPhases = (
 				DE8C0C3F227A46A300CB7605 /* Headers */,
 				DE8C0C40227A46A300CB7605 /* Sources */,
@@ -178,9 +178,9 @@
 			);
 			dependencies = (
 			);
-			name = "MultipartFormData-macOS";
+			name = MultipartFormData_macOS;
 			productName = MultipartFormData;
-			productReference = DE8C0C44227A46A300CB7605 /* MultipartFormData_macOS.framework */;
+			productReference = DE8C0C44227A46A300CB7605 /* MultipartFormData.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		DE8C0C4C227A46A300CB7605 /* MultipartFormDataTests */ = {
@@ -235,9 +235,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				DE8C0C43227A46A300CB7605 /* MultipartFormData-macOS */,
+				DE8C0C43227A46A300CB7605 /* MultipartFormData_macOS */,
 				DE8C0C4C227A46A300CB7605 /* MultipartFormDataTests */,
-				DE45B8BF227B3DC4001F02B9 /* MultipartFormData-iOS */,
+				DE45B8BF227B3DC4001F02B9 /* MultipartFormData_iOS */,
 			);
 		};
 /* End PBXProject section */
@@ -323,7 +323,7 @@
 /* Begin PBXTargetDependency section */
 		DE8C0C50227A46A300CB7605 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = DE8C0C43227A46A300CB7605 /* MultipartFormData-macOS */;
+			target = DE8C0C43227A46A300CB7605 /* MultipartFormData_macOS */;
 			targetProxy = DE8C0C4F227A46A300CB7605 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -346,9 +346,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lingoapp.MultipartFormData-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
 				PRODUCT_MODULE_NAME = MultipartFormData;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -373,9 +373,9 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.lingoapp.MultipartFormData-iOS";
+				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
 				PRODUCT_MODULE_NAME = MultipartFormData;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
@@ -527,7 +527,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
 				PRODUCT_MODULE_NAME = MultipartFormData;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "${PROJECT_NAME}";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 4.2;
@@ -556,7 +556,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
 				PRODUCT_MODULE_NAME = MultipartFormData;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				PRODUCT_NAME = "${PROJECT_NAME}";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
 			};
@@ -601,7 +601,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		DE45B8D1227B3DC5001F02B9 /* Build configuration list for PBXNativeTarget "MultipartFormData-iOS" */ = {
+		DE45B8D1227B3DC5001F02B9 /* Build configuration list for PBXNativeTarget "MultipartFormData_iOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE45B8D2227B3DC5001F02B9 /* Debug */,
@@ -619,7 +619,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		DE8C0C58227A46A300CB7605 /* Build configuration list for PBXNativeTarget "MultipartFormData-macOS" */ = {
+		DE8C0C58227A46A300CB7605 /* Build configuration list for PBXNativeTarget "MultipartFormData_macOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				DE8C0C59227A46A300CB7605 /* Debug */,
