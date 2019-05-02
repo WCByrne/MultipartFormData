@@ -7,30 +7,25 @@
 //
 
 import Foundation
+#if os(iOS)
+import MobileCoreServices
+#endif
 
 public class MultipartFormData {
 
-    enum Error: Swift.Error {
-        case unknown
-    }
+    /// The properties to be included in the form data
+    public let properties: [String: Property]
 
-    public struct Source: MultipartFormDataSource {
-        public let name: String
-        public let url: URL
-    }
-
-    public let properties: [String: Any]
-    public let sources: [String: MultipartFormDataSource]
-
+    /// The boundary used for the form data
     public let boundary: String = "Boundary-\(NSUUID().uuidString)"
 
+    /// The content type to use for a request including the boundary
     public var contentType: String {
         return "multipart/form-data; boundary=\(self.boundary)"
     }
 
-    public init(properties: [String: Any] = [:], sources: [String: MultipartFormDataSource] = [:]) {
+    public init(properties: [String: Property]) {
         self.properties = properties
-        self.sources = sources
     }
 
     /// Create the form data
@@ -47,35 +42,46 @@ public class MultipartFormData {
     /// - Parameter to: A file url to write to
     public func write(to destination: URL) throws {
         guard FileManager.default.createFile(atPath: destination.path, contents: nil, attributes: nil) else {
-            throw Error.unknown
+            throw Error.fileWriteFailed
         }
         var writer = try FileHandle(forWritingTo: destination)
         try self.process(with: &writer)
         writer.closeFile()
     }
+}
+
+extension MultipartFormData {
 
     private func process<T: Writable>(with target: inout T) throws {
-        self.writeProperties(to: &target)
-        try self.writeSources(to: &target)
+        try self.writeProperties(to: &target)
         target.append("--\(boundary)--\r\n")
     }
 
-    private func writeProperties<T: Writable>(to target: inout T) {
+    private func writeProperties<T: Writable>(to target: inout T) throws {
         for (key, value) in self.properties {
             target.append("--\(boundary)\r\n")
-            target.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
-            target.append("\(value)\r\n")
-        }
-    }
+            switch value {
+            case let .file(file):
+                let mimetype = MultipartFormData.mimeType(for: file.url)
+                target.append("Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(file.name)\"\r\n")
+                target.append("Content-Type: \(mimetype)")
+                target.append("\r\n\r\n")
+                do {
+                    try target.appendFile(at: file.url)
+                } catch {
+                    throw Error.fileNotFound
+                }
 
-    private func writeSources<T: Writable>(to target: inout T) throws {
-        for (key, source) in sources {
-            let mimetype = MultipartFormData.mimeType(for: source.url)
+            case let .data(data, contentType):
+                target.append("Content-Disposition: form-data; name=\"\(key)\";")
+                target.append("Content-Type: \(contentType);")
+                target.append("\r\n\r\n")
+                target.append(data)
 
-            target.append("--\(boundary)\r\n")
-            target.append("Content-Disposition: form-data; name=\"\(key)\"; filename=\"\(source.name)\"\r\n")
-            target.append("Content-Type: \(mimetype)\r\n\r\n")
-            try target.appendFile(at: source.url)
+            case let .property(prop):
+                target.append("Content-Disposition: form-data; name=\"\(key)\"\r\n\r\n")
+                target.append(prop)
+            }
             target.append("\r\n")
         }
     }
@@ -86,6 +92,6 @@ public class MultipartFormData {
                 return mimetype as String
             }
         }
-        return "application/octet-stream";
+        return "application/octet-stream"
     }
 }

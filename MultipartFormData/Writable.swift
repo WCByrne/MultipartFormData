@@ -45,4 +45,3 @@ extension Data: Writable {
         self.append(data)
     }
 }
-

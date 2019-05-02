@@ -20,7 +20,10 @@ class TestMultipartFormData: XCTestCase {
 
     func testGetDataWithProperties() {
 
-        let props: [String: Any] = ["name": "steve", "age": 40]
+        let props: [String: MultipartFormData.Property] = [
+            "name": .property("steve"),
+            "age": .property("40")
+        ]
         let formData = MultipartFormData(properties: props)
         do {
             let data = try formData.data()
@@ -44,7 +47,10 @@ class TestMultipartFormData: XCTestCase {
     }
 
     func testWriteWithProperties() {
-        let props: [String: Any] = ["name": "steve", "age": 40]
+        let props: [String: MultipartFormData.Property] = [
+            "name": .property("steve"),
+            "age": .property("40")
+        ]
         let formData = MultipartFormData(properties: props)
         do {
             let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
@@ -73,15 +79,15 @@ class TestMultipartFormData: XCTestCase {
             let fileURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
             let data = "This is some data".data(using: .utf8)!
             try data.write(to: fileURL)
-            let formData = MultipartFormData(sources: ["file": fileURL])
+            let formData = MultipartFormData(properties: ["file": .file(fileURL)])
 
             let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
             try formData.write(to: url)
             let output = redactUUID(msg: try String(contentsOf: url))
 
             let expected = [
-                "--Boundary-<UUID>\r\nContent-Disposition: form-data; name=\"file\"; filename=\"<UUID>\"\r\nContent-Type: application/octet-stream\r\n\r\nThis is some data\r\n",
-                "--Boundary-<UUID>--\r\n" // swiftlint:disable:this line_length
+                "--Boundary-<UUID>\r\nContent-Disposition: form-data; name=\"file\"; filename=\"<UUID>\"\r\nContent-Type: application/octet-stream\r\n\r\nThis is some data\r\n", // swiftlint:disable:this line_length
+                "--Boundary-<UUID>--\r\n"
             ]
             for str in expected {
                 XCTAssertTrue(output.contains(str))
