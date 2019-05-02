@@ -347,7 +347,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
-				PRODUCT_MODULE_NAME = MultipartFormData;
+				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -374,7 +374,7 @@
 					"@loader_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
-				PRODUCT_MODULE_NAME = MultipartFormData;
+				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -526,7 +526,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
-				PRODUCT_MODULE_NAME = MultipartFormData;
+				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -555,7 +555,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
-				PRODUCT_MODULE_NAME = MultipartFormData;
+				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
 				PRODUCT_NAME = "${PROJECT_NAME}";
 				SKIP_INSTALL = YES;
 				SWIFT_VERSION = 4.2;
