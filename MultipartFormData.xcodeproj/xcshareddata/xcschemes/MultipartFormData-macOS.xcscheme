@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "DE8C0C43227A46A300CB7605"
-               BuildableName = "MultipartFormData_macOS.framework"
+               BuildableName = "MultipartFormData.framework"
                BlueprintName = "MultipartFormData_macOS"
                ReferencedContainer = "container:MultipartFormData.xcodeproj">
             </BuildableReference>
@@ -43,7 +43,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE8C0C43227A46A300CB7605"
-            BuildableName = "MultipartFormData_macOS.framework"
+            BuildableName = "MultipartFormData.framework"
             BlueprintName = "MultipartFormData_macOS"
             ReferencedContainer = "container:MultipartFormData.xcodeproj">
          </BuildableReference>
@@ -65,7 +65,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE8C0C43227A46A300CB7605"
-            BuildableName = "MultipartFormData_macOS.framework"
+            BuildableName = "MultipartFormData.framework"
             BlueprintName = "MultipartFormData_macOS"
             ReferencedContainer = "container:MultipartFormData.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "DE8C0C43227A46A300CB7605"
-            BuildableName = "MultipartFormData_macOS.framework"
+            BuildableName = "MultipartFormData.framework"
             BlueprintName = "MultipartFormData_macOS"
             ReferencedContainer = "container:MultipartFormData.xcodeproj">
          </BuildableReference>
