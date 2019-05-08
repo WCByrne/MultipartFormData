@@ -18,7 +18,7 @@ public extension URLSession {
     /// - Parameter method: The method for the request (default POST)
     /// - Parameter properties: Properties to include in the form data
     /// - Returns: An upload task in a ready state
-    public func uploadTask(url: URL, method: String = "POST", properties: [String: MultipartFormData.Property]) throws -> URLSessionUploadTask {
+    func uploadTask(url: URL, method: String = "POST", properties: [String: MultipartFormData.Property]) throws -> URLSessionUploadTask {
         var request = URLRequest(url: url)
         request.httpMethod = method
         return try self.uploadTask(with: request, properties: properties)
@@ -33,7 +33,7 @@ public extension URLSession {
     /// - Parameter request: A URL request
     /// - Parameter properties: Properties to include in the form data
     /// - Returns: An upload task in a ready state
-    public func uploadTask(with request: URLRequest, properties: [String: MultipartFormData.Property]) throws -> URLSessionUploadTask {
+    func uploadTask(with request: URLRequest, properties: [String: MultipartFormData.Property]) throws -> URLSessionUploadTask {
         let url = URL(string: NSTemporaryDirectory())!.appendingPathComponent(UUID().uuidString)
         let data = MultipartFormData(properties: properties)
         try data.write(to: url)
