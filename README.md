@@ -43,21 +43,54 @@ let form = MultipartFormData(properties: [
 ])
 ```
 
+customize a file name
+```swift
+let jsonData = try JSONEncoder().encode(["name": "Mary", "age": "32"])
+let avatarFileURL = URL() //the file url on disc
+let form = MultipartFormData(properties: [
+    "userData": .data(jsonData, "application/json")
+    "avatar": .file(MultipartFormData.File(url: avatarFileURL, name: "Avatar"))
+])
+```
+
+Append parts of a file
+```swift
+let fileUrl = URL() //the file url on disc
+let fileSize = // the size of our file in bytes
+let chunkSize = 1024 * 1024 * 5 // 5 mb chunks
+let chunkCount = Int((Double(fileSize) / Double(chunkSize)).rounded(.up))
+
+for chunkIndex in 0..<chunkCount {
+    let fileChunk = MultipartFormData.File(url: fileUrl,
+                                            offset: UInt64(chunkSize * chunkIndex),
+                                            length: UInt64(chunkSize))
+    let form = MultipartFormData(properties: [
+        "chunk_index": .property("\(chunkIndex)")
+        "chunk": .file(fileChunk)
+    ])
+    // ...send request
+}
+```
+
 ### Output
 
-The form data can either be returned as data or written to disc for use in an upload task. Writing directly to disc is preferred as it avoids bringing all the data into memory at one time.
+The form data can either be returned as data OR written to disc for use in an upload task. Writing directly to disc is preferred as it avoids bringing all the data into memory at one time. Any files included in the form data will be read progressively to the new temporary file before being uploaded.
 
 ```swift
-let data = form.data()
-
-// Create a temp file url to write to
-let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
-form.write(to: tempURL)
-
-// Then to create the upload task
+// Prepare your requst
+let form = MultiPartFormData(properties: [:])
 var request = URLRequest(url: URL(string: "api.myservice.com/users")!)
 request.addValue(form.contentType, forHTTPHeaderField: "Content-Type")
+
+// Add data directly
+request.httpBody = form.data()
+let task = URLSession.shared.dataTask(with: request)
+
+// OR write the data to disk for upload (better for large forms/files)
+let tempURL = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(UUID().uuidString)
+form.write(to: tempURL)
 let task = URLSession.shared.uploadTask(with: request, fromFile: tempURL)
+
 task.resume()
 ```
 
