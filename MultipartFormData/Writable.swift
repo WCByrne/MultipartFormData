@@ -13,13 +13,42 @@ protocol Writable {
     mutating func append(_ data: Data)
 }
 
+extension FileHandle {
+    var currentOffset: UInt64 {
+        if #available(OSX 10.15.4, *) {
+            return try! self.offset()
+        } else {
+            return self.offsetInFile
+        }
+    }
+}
+
 extension Writable {
-    mutating func appendFile(at url: URL, chunkSize: Int = 1000000) throws {
-        let reader = try FileHandle(forReadingFrom: url)
-        var data = reader.readData(ofLength: chunkSize)
+    mutating func appendFile(_ file: MultipartFormDataFile) throws {
+        let reader = try FileHandle(forReadingFrom: file.url)
+        
+        if let offset = file.offset {
+            if #available(OSX 10.15, *) {
+                try reader.seek(toOffset: offset)
+            } else {
+                reader.seek(toFileOffset: offset)
+            }
+        }
+        
+        func getChunkSize() throws -> Int {
+            if let length = file.length {
+                let max = (file.offset ?? 0) + length
+                let current = reader.currentOffset
+                if current >= max { return 0 }
+                return Int(min(max - current, 1000000))
+            }
+            return 1000000
+        }
+        
+        var data = try reader.readData(ofLength: getChunkSize())
         while !data.isEmpty {
             self.append(data)
-            data = reader.readData(ofLength: chunkSize)
+            data = try reader.readData(ofLength: getChunkSize())
         }
         reader.closeFile()
     }

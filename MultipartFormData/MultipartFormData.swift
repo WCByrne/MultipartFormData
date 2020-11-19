@@ -67,7 +67,7 @@ extension MultipartFormData {
                 target.append("Content-Type: \(mimetype)")
                 target.append("\r\n\r\n")
                 do {
-                    try target.appendFile(at: file.url)
+                    try target.appendFile(file)
                 } catch {
                     throw Error.fileNotFound
                 }
