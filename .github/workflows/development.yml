@@ -10,6 +10,6 @@ jobs:
     name: Test
     runs-on: macos-latest
     steps:
-      
+      - uses: actions/checkout@master
       - name: Test
         run: xcodebuild clean && xcodebuild test -project MultipartFormData.xcodeproj -scheme MultipartFormDataTests
