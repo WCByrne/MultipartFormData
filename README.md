@@ -72,9 +72,9 @@ for chunkIndex in 0..<chunkCount {
 }
 ```
 
-### Output
+### Using form data
 
-The form data can either be returned as data OR written to disc for use in an upload task. Writing directly to disc is preferred as it avoids bringing all the data into memory at one time. Any files included in the form data will be read progressively to the new temporary file before being uploaded.
+The form data can either be returned as data OR written to disc for use in an upload task. Writing to disc is preferred for larger forms as it avoids bringing all the data into memory at one time. Any files included in the form data will be read progressively to the new temporary file before being uploaded.
 
 ```swift
 // Prepare your requst
