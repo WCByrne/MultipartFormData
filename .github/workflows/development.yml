@@ -1,0 +1,15 @@
+on:
+  push:
+    branches:
+      - "*"
+      - "!master"
+
+name: Development
+jobs:
+  build:
+    name: Test
+    runs-on: macos-latest
+    steps:
+      
+      - name: Test
+        run: xcodebuild clean && xcodebuild test -project MultipartFormData.xcodeproj -scheme MultipartFormDataTests
