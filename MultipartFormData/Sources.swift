@@ -43,7 +43,6 @@ public extension MultipartFormData {
         public let offset: UInt64?
         public let length: UInt64?
         
-        
         /// - Parameters:
         ///   - url: The url of the file on disk
         ///   - name: A name for the file if different than the url
