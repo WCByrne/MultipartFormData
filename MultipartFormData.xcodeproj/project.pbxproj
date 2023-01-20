@@ -533,7 +533,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
 				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
 				PRODUCT_NAME = "${PROJECT_NAME}";
@@ -563,7 +563,7 @@
 					"@executable_path/../Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lingoapp.MultipartFormData;
 				PRODUCT_MODULE_NAME = "${PROJECT_NAME}";
 				PRODUCT_NAME = "${PROJECT_NAME}";
